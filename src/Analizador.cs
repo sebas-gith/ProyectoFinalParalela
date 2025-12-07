@@ -50,6 +50,7 @@ public class Analizador
         double eficiencia = (speedup/maxParalelismo)*100;
         double mejoraPorciento = ((secTime - recurTime) / secTime) * 100;
 
+        //presentacion de metricas
         Console.WriteLine("---------- METRICAS DE RENDIMIENTO --------------");
         Console.WriteLine($"Tiempo total: {timeLectura.ElapsedMilliseconds + paraleloTime.ElapsedMilliseconds} ms");
         Console.WriteLine($"Tiempo de lectura: {timeLectura.ElapsedMilliseconds} ms");

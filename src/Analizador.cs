@@ -92,5 +92,26 @@ public class Analizador
         await Task.WhenAll(t1, t2);
         return Combinar(t1.Result, t2.Result);
     }
+    private Resultado ProcesarSecuencial(string texto, string termino)
+    {
+        var r = new Resultado();
+
+        r.TotalLineas = texto.Count(c => c == '\n');
+
+        var palabras = Regex.Matches(texto, @"\b[\w']+\b")
+            .Cast<Match>()
+            .Select(m => m.Value.ToLower())
+            .ToList();
+
+        r.TotalPalabras = palabras.Count;
+
+        foreach (var p in palabras)
+            r.Frecuencias.AddOrUpdate(p, 1, (_, v) => v + 1);
+
+        if (!string.IsNullOrEmpty(termino))
+            r.OcurrenciasTermino = palabras.Count(p => p == termino.ToLower());
+
+        return r;
+    }
 
 }

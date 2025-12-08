@@ -1,6 +1,7 @@
+using AnalizadorTextoParalelo;
 using System.Diagnostics;
 using System.Text;
-using AnalizadorTextoParalelo;
+using System.Text.RegularExpressions;
 
 public class Analizador
 {
@@ -34,7 +35,7 @@ public class Analizador
 
         //tiempo secuencial
         Stopwatch secuencialTime = Stopwatch.StartNew();
-        var secuencial = ProcesarSecuencial(textoTotal, termino, 1);
+        var secuencial = ProcesarSecuencial(textoTotal, termino);
         secuencialTime.Stop();
 
         //tiempo paralelo/recursivo
@@ -66,4 +67,30 @@ public class Analizador
 
         return recursivo;
     }
+    private async Task<Resultado> ProcesarRecursivo(string texto, string termino, int nivel)
+    {
+        if (texto.Length <= sizeBloque)
+        {
+            var rBase = ProcesarSecuencial(texto, termino);
+            rBase.BloquesProcesados = 1;
+            rBase.TareasCreadas = 1;
+            rBase.NivelRecursion = nivel;
+            return rBase;
+        }
+
+        int medio = texto.Length / 2;
+
+        while (medio < texto.Length && !char.IsWhiteSpace(texto[medio]))
+            medio++;
+
+        string izq = texto.Substring(0, medio);
+        string der = texto.Substring(medio);
+
+        var t1 = Task.Run(() => ProcesarRecursivo(izq, termino, nivel + 1));
+        var t2 = Task.Run(() => ProcesarRecursivo(der, termino, nivel + 1));
+
+        await Task.WhenAll(t1, t2);
+        return Combinar(t1.Result, t2.Result);
+    }
+
 }

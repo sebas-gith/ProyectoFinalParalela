@@ -1,3 +1,4 @@
+using System;
 using AnalizadorTextoParalelo;
 using System.Diagnostics;
 using System.Text;
@@ -40,7 +41,7 @@ public class Analizador
 
         //tiempo paralelo/recursivo
         Stopwatch paraleloTime = Stopwatch.StartNew();
-        var recursivo = ProcesarRecursivo(textoTotal, termino, 1);
+        var recursivo = await ProcesarRecursivo(textoTotal, termino, 1);
         paraleloTime.Stop();
 
         //speedup y eficiencia
@@ -113,5 +114,21 @@ public class Analizador
 
         return r;
     }
-
+    private Resultado Combinar(Resultado a, Resultado b)
+    {
+        var r = new Resultado();
+        r.TotalPalabras = a.TotalPalabras + b.TotalPalabras;
+        r.TotalLineas = a.TotalLineas + b.TotalLineas;
+        r.OcurrenciasTermino = a.OcurrenciasTermino + b.OcurrenciasTermino;
+        r.BloquesProcesados = a.BloquesProcesados + b.BloquesProcesados;
+        r.TareasCreadas = a.TareasCreadas + b.TareasCreadas;
+        r.NivelRecursion = Math.Max(a.NivelRecursion, b.NivelRecursion);
+        foreach (var kv in a.Frecuencias)
+            r.Frecuencias.AddOrUpdate(kv.Key, kv.Value, (_, v) => v + kv.Value);
+        foreach (var kv in b.Frecuencias)
+            r.Frecuencias.AddOrUpdate(kv.Key, kv.Value, (_, v) => v + kv.Value);
+        return r;
+    }
 }
+
+

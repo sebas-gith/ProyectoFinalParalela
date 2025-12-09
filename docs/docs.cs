@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoFinalParalela.docs
 {
-    internal class docs
+    internal class Docs
     {
     }
 }

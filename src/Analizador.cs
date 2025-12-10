@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using AnalizadorTextoParalelo;
 using System.Diagnostics;
 using System.Text;
@@ -65,6 +65,9 @@ public class Analizador
         Console.WriteLine($"Bloques: {recursivo.BloquesProcesados}");
         Console.WriteLine($"Nivel maximo de recursion: {recursivo.NivelRecursion}");
         Console.WriteLine($"Nucleos: {maxParalelismo}");
+        Console.WriteLine();
+        DibujarGrafica(secTime, recurTime);
+        Console.WriteLine();
 
         return recursivo;
     }
@@ -128,6 +131,26 @@ public class Analizador
         foreach (var kv in b.Frecuencias)
             r.Frecuencias.AddOrUpdate(kv.Key, kv.Value, (_, v) => v + kv.Value);
         return r;
+    }
+
+    private void DibujarGrafica(double tSec, double tPar)
+    {
+        Console.WriteLine("COMPARATIVA GRAFICA:");
+        double max = Math.Max(tSec, tPar);
+        int escala = 40;
+
+        ImprimirBarra("Secuencial", tSec, max, escala, ConsoleColor.Red);
+        ImprimirBarra("Paralelo  ", tPar, max, escala, ConsoleColor.Green);
+    }
+
+    private void ImprimirBarra(string nombre, double valor, double max, int escala, ConsoleColor color)
+    {
+        int largo = (int)((valor / max) * escala);
+        Console.Write($"{nombre} |");
+        Console.ForegroundColor = color;
+        Console.Write(new string('█', largo > 0 ? largo : 1));
+        Console.ResetColor();
+        Console.WriteLine($" {valor:F0} ms");
     }
 }
 

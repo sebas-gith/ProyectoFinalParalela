@@ -1,0 +1,97 @@
+ARCHIVO DE DATOS DE PRUEBA - ESTRUCTURADO
+==========================================
+
+GENERADO: 2024-01-15 15:45:22
+TIPO: Base de datos de prueba
+VERSIÓN: 2.0
+CODIFICACIÓN: UTF-8
+
+==========================================
+TABLA 1: USUARIOS DEL SISTEMA
+==========================================
+ID|NOMBRE|APELLIDO|EMAIL|TELÉFONO|PAÍS|ACTIVO
+001|María|González|maria.g@ejemplo.com|+34 600 111 222|España|Sí
+002|John|Smith|john.smith@example.com|+1 555 123 4567|EEUU|Sí
+003|Anna|Müller|anna.mueller@beispiel.de|+49 30 12345678|Alemania|Sí
+004|Carlos|Rodríguez|c.rodriguez@test.com|+52 55 9876 5432|México|No
+005|Yuki|Tanaka|y.tanaka@example.jp|+81 3 1234 5678|Japón|Sí
+006|Sophie|Martin|s.martin@exemple.fr|+33 1 2345 6789|Francia|Sí
+007|Luca|Rossi|l.rossi@esempio.it|+39 02 1234567|Italia|Sí
+008|Alex|Chen|alex.chen@sample.com|+86 10 8765 4321|China|No
+009|Elena|Petrova|e.petrova@test.ru|+7 495 1234567|Rusia|Sí
+010|David|Wilson|d.wilson@example.co.uk|+44 20 7123 4567|Reino Unido|Sí
+
+==========================================
+TABLA 2: PRODUCTOS EN INVENTARIO
+==========================================
+SKU|NOMBRE_PRODUCTO|CATEGORÍA|PRECIO|STOCK|ÚLTIMA_ACTUALIZACIÓN
+PROD-1001|Laptop Pro 15"|Tecnología|1299.99|45|2024-01-10
+PROD-1002|Ratón Inalámbrico|Tecnología|29.99|120|2024-01-14
+PROD-1003|Teclado Mecánico|Tecnología|89.99|67|2024-01-12
+PROD-2001|Silla Ergonómica|Oficina|349.99|23|2024-01-09
+PROD-2002|Escritorio Ajustable|Oficina|459.99|15|2024-01-08
+PROD-3001|Libro: Python Avanzado|Libros|39.99|89|2024-01-13
+PROD-3002|Libro: IA para Principiantes|Libros|34.99|102|2024-01-14
+PROD-4001|Auriculares Bluetooth|Audio|79.99|56|2024-01-11
+PROD-4002|Altavoz Portátil|Audio|129.99|34|2024-01-07
+PROD-5001|Monitor 27" 4K|Tecnología|329.99|28|2024-01-06
+
+==========================================
+TABLA 3: PEDIDOS RECIENTES
+==========================================
+N_PEDIDO|ID_CLIENTE|PRODUCTOS|TOTAL|FECHA|ESTADO
+ORD-2024-001|003|PROD-1001, PROD-4001|1379.98|2024-01-15|Enviado
+ORD-2024-002|001|PROD-3002, PROD-1002|64.98|2024-01-14|Procesando
+ORD-2024-003|010|PROD-2001, PROD-5001|789.98|2024-01-14|Entregado
+ORD-2024-004|005|PROD-1003|89.99|2024-01-13|Cancelado
+ORD-2024-005|007|PROD-4002, PROD-3001|169.98|2024-01-12|Entregado
+ORD-2024-006|002|PROD-1001, PROD-4001, PROD-3002|1424.97|2024-01-11|Enviado
+ORD-2024-007|006|PROD-2002|459.99|2024-01-10|Procesando
+ORD-2024-008|009|PROD-1002, PROD-3001, PROD-3002|104.97|2024-01-09|Entregado
+
+==========================================
+TABLA 4: REGISTRO DE ACTIVIDAD
+==========================================
+TIMESTAMP|USUARIO|ACCIÓN|DETALLES
+2024-01-15 09:15:22|admin|LOGIN|Inicio de sesión exitoso
+2024-01-15 09:20:45|001|CONSULTA|Consulta de productos en categoría Tecnología
+2024-01-15 10:05:12|003|COMPRA|Realizó pedido ORD-2024-001
+2024-01-15 11:30:18|admin|ACTUALIZACIÓN|Actualizó stock de PROD-1002
+2024-01-15 12:45:33|005|CANCELACIÓN|Canceló pedido ORD-2024-004
+2024-01-15 13:20:01|010|CONSULTA|Revisó historial de pedidos
+2024-01-15 14:10:55|002|COMPRA|Realizó pedido ORD-2024-006
+2024-01-15 14:45:30|admin|BACKUP|Realizó copia de seguridad del sistema
+
+==========================================
+FORMATOS DE DATOS UTILIZADOS
+==========================================
+• Fechas: YYYY-MM-DD
+• Fechas con hora: YYYY-MM-DD HH:MM:SS
+• Moneda: Euros (€) - Formato: 999.99
+• IDs: Formato alfanumérico
+• Separador de campos: |
+• Separador de listas: ,
+• Booleanos: Sí/No
+
+==========================================
+ESTADÍSTICAS DEL ARCHIVO
+==========================================
+• Total de usuarios: 10
+• Total de productos: 10
+• Total de pedidos: 8
+• Total de registros de actividad: 8
+• Valor total de pedidos: €4,484.84
+• Producto más caro: Escritorio Ajustable (€459.99)
+• Producto más barato: Ratón Inalámbrico (€29.99)
+
+==========================================
+NOTAS
+==========================================
+Este archivo contiene datos ficticios para pruebas.
+Los precios están en euros.
+Los teléfonos siguen formatos internacionales.
+Todos los datos son generados automáticamente.
+
+==========================================
+FIN DEL ARCHIVO - REGISTROS: 36 LÍNEAS
+==========================================

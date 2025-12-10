@@ -1,11 +1,12 @@
 ﻿using System;
-using AnalizadorTextoParalelo;
 using System.Diagnostics;
 using System.Text;
 using System.Text.RegularExpressions;
 
-public class Analizador
+namespace AnalizadorTextoParalelo
 {
+    public class Analizador
+    {
     private readonly int sizeBloque;
     private readonly int maxParalelismo;
 
@@ -152,6 +153,8 @@ public class Analizador
         Console.ResetColor();
         Console.WriteLine($" {valor:F0} ms");
     }
+}
+
 }
 
 

@@ -11,7 +11,7 @@ namespace AnalizadorTextoParalelo
             Console.WriteLine("CALCULADORA PARALELA DE ESTADISTICAS DE TEXTO");
             Console.WriteLine("Descomposicion Recursiva (Divide y Venceras) \n");
 
-            string carpeta = @"../tests";
+            string carpeta = ObtenerRutaTests();
 
             var archivos = Directory.GetFiles(carpeta, "*.txt").ToList();
 
@@ -54,6 +54,33 @@ namespace AnalizadorTextoParalelo
             Console.WriteLine("\nPresiona una tecla para salir...");
             Console.ReadKey();
         }
+
+        public static string ObtenerRutaTests()
+        {
+            string directorioActual = Directory.GetCurrentDirectory();
+            while (!string.IsNullOrEmpty(directorioActual))
+            {
+                bool tieneCsproj = Directory.GetFiles(directorioActual, "*.md").Any();
+                bool tieneSln = Directory.GetFiles(directorioActual, "*.sln").Any();
+
+                if (tieneCsproj || tieneSln)
+                {
+                    string rutaTests = Path.Combine(directorioActual, "tests");
+
+                    if (Directory.Exists(rutaTests))
+                        return rutaTests;
+                }
+
+                var parent = Directory.GetParent(directorioActual);
+                if (parent == null)
+                    break;
+
+                directorioActual = parent.FullName;
+            }
+
+            return Path.Combine(Directory.GetCurrentDirectory(), "tests");
+        }
+
 
 
 
